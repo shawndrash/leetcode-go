@@ -71,14 +71,32 @@ TODO: 添加解题思路
 EOF
 
 # 创建 solution.go
-cat > "${PROBLEM_DIR}/solution.go" <<EOF
+cat > "${PROBLEM_DIR}/solution.go" <<'EOF'
 package ${PACKAGE_NAME}
 
-// ${FUNCTION_NAME} 解决 LeetCode 第 ${PROBLEM_NUM} 题
-func ${FUNCTION_NAME}() {
-	// TODO: 实现你的解法
+// 如果是链表题目，取消下面的注释：
+// type ListNode struct {
+// 	Val  int
+// 	Next *ListNode
+// }
+
+// 如果是树题目，取消下面的注释：
+// type TreeNode struct {
+// 	Val   int
+// 	Left  *TreeNode
+// 	Right *TreeNode
+// }
+
+// ============= 以下是提交到 LeetCode 的代码 =============
+
+// TODO: 实现你的解法
+// 提交时，直接复制下面的函数（及上面需要的结构体定义）到 LeetCode 即可
+func solution() {
+	// 你的实现
 }
 EOF
+# 替换变量
+sed -i '' "s/\${PACKAGE_NAME}/${PACKAGE_NAME}/g" "${PROBLEM_DIR}/solution.go"
 
 # 创建 solution_test.go
 cat > "${PROBLEM_DIR}/solution_test.go" <<EOF
