@@ -36,3 +36,22 @@ func moveZeroes(nums []int) {
 		l++
 	}
 }
+
+func moveZeroes2(nums []int) {
+	slow := 0
+	for slow < len(nums) && nums[slow] != 0 {
+		slow++
+	}
+
+	for fast := slow + 1; fast < len(nums); fast++ {
+		if nums[fast] != 0 {
+			nums[slow] = nums[fast]
+			slow++
+		}
+	}
+
+	for slow < len(nums) {
+		nums[slow] = 0
+		slow++
+	}
+}
