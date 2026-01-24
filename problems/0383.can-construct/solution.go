@@ -1,0 +1,36 @@
+package can_construct
+
+// 如果是链表题目，取消下面的注释：
+// type ListNode struct {
+// 	Val  int
+// 	Next *ListNode
+// }
+
+// 如果是树题目，取消下面的注释：
+// type TreeNode struct {
+// 	Val   int
+// 	Left  *TreeNode
+// 	Right *TreeNode
+// }
+
+// ============= 以下是提交到 LeetCode 的代码 =============
+
+func canConstruct(ransomNote string, magazine string) bool {
+	m := make(map[int32]int)
+	for _, c := range magazine {
+		m[c]++
+	}
+
+	for _, r := range ransomNote {
+		if _, ok := m[r]; !ok {
+			return false
+		}
+
+		m[r]--
+		if m[r] < 0 {
+			return false
+		}
+	}
+
+	return true
+}
