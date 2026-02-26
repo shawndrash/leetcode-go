@@ -30,3 +30,31 @@ func minDepth(root *TreeNode) int {
 
 	return 1 + min(left, right)
 }
+
+func minDepth1(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	queue, depth := make([]*TreeNode, 0), 0
+	queue = append(queue, root)
+	for len(queue) > 0 {
+		depth++
+		n := len(queue)
+		for i := 0; i < n; i++ {
+			front := queue[0]
+			queue = queue[1:]
+			if front.Left != nil {
+				queue = append(queue, front.Left)
+			}
+			if front.Right != nil {
+				queue = append(queue, front.Right)
+			}
+			if front.Left == nil && front.Right == nil {
+				return depth
+			}
+		}
+	}
+
+	return depth
+}
