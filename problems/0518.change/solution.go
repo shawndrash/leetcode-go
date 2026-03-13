@@ -44,6 +44,8 @@ func change(amount int, coins []int) int {
 	return dp[len(coins)-1][amount]
 }
 
+// 先遍历物品（coins），再遍历背包（amount），求的是组合数（{1,2}和{2,1}是一个组合，因为先遍历物品是不可能出现{2,1}的）
+// 先遍历背包（amount）,再遍历物品（coins）,求得是排列数
 func change1(amount int, coins []int) int {
 	dp := make([]int, len(coins))
 	for i := 0; i <= amount; i++ {
