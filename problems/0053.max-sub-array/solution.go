@@ -30,3 +30,14 @@ func maxSubArray(nums []int) int {
 
 	return res
 }
+
+func maxSubArray1(nums []int) int {
+	dp, res := make([]int, len(nums)), nums[0]
+	dp[0] = nums[0]
+	for i := 1; i < len(nums); i++ {
+		dp[i] = max(dp[i-1], 0) + nums[i]
+		res = max(res, dp[i])
+	}
+
+	return res
+}
